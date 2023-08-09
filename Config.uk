@@ -1,0 +1,11 @@
+# Invisible option that is used to detect
+# if LIBTLSF is available for configuration
+config LIBTLSF_INCLUDED
+	bool
+	default y
+
+config LIBTLSF
+	bool "TLSF - real-time dynamic memory allocator (BSD license)"
+	select LIBUKALLOC_IFMALLOC
+	default n
+

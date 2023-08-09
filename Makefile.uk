@@ -1,0 +1,4 @@
+$(eval $(call addlib_s,libtlsf,$(CONFIG_LIBTLSF)))
+LIBTLSF_OBJS += $(LIBTLSF_BASE)/libtlsf.o
+
+CINCLUDES-$(CONFIG_LIBTLSF) += -I$(LIBTLSF_BASE)/include
