@@ -1,0 +1,18 @@
+CINCLUDES-$(CONFIG_LIBTLSF) += -I$(IMPORT_BASE)/include
+CXXINCLUDES-$(CONFIG_LIBTLSF) += -I$(IMPORT_BASE)/include
+
+ifeq ($(CONFIG_OPTIMIZE_PIE),y)
+ifeq ($(CONFIG_LIBMUSL),y)
+UK_OLIBS-$(CONFIG_LIBTLSF) += $(IMPORT_BASE)/libtlsfmc-$(CONFIG_UK_ARCH)-musl-pie.o
+else
+UK_OLIBS-$(CONFIG_LIBTLSF) += $(IMPORT_BASE)/libtlsfmc-$(CONFIG_UK_ARCH)-nolibc-pie.o
+endif
+else
+ifeq ($(CONFIG_LIBMUSL),y)
+UK_OLIBS-$(CONFIG_LIBTLSF) += $(IMPORT_BASE)/libtlsfmc-$(CONFIG_UK_ARCH)-musl.o
+else
+UK_OLIBS-$(CONFIG_LIBTLSF) += $(IMPORT_BASE)/libtlsfmc-$(CONFIG_UK_ARCH)-nolibc.o
+endif
+endif
+
+UK_LIBID_EXTRA-$(CONFIG_LIBTLSF) += libtlsf
